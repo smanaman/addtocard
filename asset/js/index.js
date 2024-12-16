@@ -1,6 +1,6 @@
 async function cars() {
     try {
-        let res = await fetch('http://localhost:3000/cars');
+        let res = await fetch('db.json');
         let final = await res.json();
 
         console.log(final);
@@ -74,7 +74,7 @@ function getvalue(image, makemodel, year, fuelType, horsepower, price) {
     p.textContent=count
 
     localStorage.setItem('cart', JSON.stringify(cart));
-    // alert('your card add to wiselist')
+    alert('your card add to wiselist')
     // window.location.reload()
 
 }

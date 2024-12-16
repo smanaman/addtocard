@@ -1,5 +1,4 @@
-{
-  "cars" :[
+[
     {
       "id": 1,
       "make": "Toyota",
@@ -561,4 +560,3 @@
       "image": "https://imageio.forbes.com/specials-images/imageserve/6604f74b27ca13d2f957bc97/2025-subaru-forester/960x0.jpg?format=jpg&width=960"
     }
   ]
-}
