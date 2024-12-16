@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+    <link rel="stylesheet" href="./asset/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
+
+<body>
+ <div id="root"></div>
+
+
+
+   
+
+</body>
+
+<script>
+ 
+  
+</script>
+
+
+<script>
+    let result=localStorage.getItem('cart')
+    let data=JSON.parse(result)
+
+   console.log(data);
+
+
+function render(){
+    
+
+   data.forEach((element,index) => {
+    // console.log(val);
+       let body=document.getElementById('root')
+       body.innerHTML +=   `<div class="Add-Card">
+                <div class="Add-img">
+                    <img src="${element.image}" alt="" srcset="" width="100%" height="100%">
+                </div>
+                <div class="Modeal-name">
+                    <h2>Modeal:${element.makemodel}</h2>
+                    <button class="btn ror"><i class="fa-solid fa-angle-down"></i></button>
+                </div>
+                <div class="Details hidden">
+                    <div class="details-text">
+                        <p>The ${element.year} ${element.makemodel} is a sleek and reliable sedan designed for performance and efficiency. It runs
+                            on a ${element.engine} engine producing ${element.horsepower} horsepower, paired with either a hybrid or ${element.fuelType}
+                            fuel system.
+                        </p>
+                    </div>
+                    <div class="price">
+                        <p class="buynow">$${element.price}</p>
+                        <p class="doller">Buy now</p>
+                    </div>
+                </div>
+                <div class="hover-part">
+                    <div class="addtocardicon" onclick="remove(${index})">
+                        <i class="fa-solid fa-trash"></i>
+                    </div>
+                    <div class="addtocardicon"><i class="fa-solid fa-cart-shopping"></i></div>
+                    <div class="addtocardicon"><i class="fa-solid fa-share-nodes"></i></div>
+                </div>
+            </div>
+            `;
+            addToggleListeners()
+   });
+}
+
+   function addToggleListeners() {
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            const card = button.closest('.Add-Card');
+            const details = card.querySelector('.Details');
+
+            details.classList.toggle("mystyle");
+            button.classList.toggle("ror2");
+        });
+    });
+}
+function remove(index) {
+
+data.splice(index, 1);
+
+localStorage.setItem('cart', JSON.stringify(data))
+window.location.reload()
+render()
+
+}
+render()
+
+
+</script>
+
+</html>
